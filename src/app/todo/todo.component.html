@@ -1,0 +1,64 @@
+<section class="container p-3">
+  <header class="header text-center">
+    <h4>What needs to be done?</h4>
+
+<div class="container">
+	<form [formGroup]="Todoform" (ngSubmit)="addTodo()">
+	  <div class="form-group row">
+	    <label for="title" class="col-sm-2 col-form-label">Title</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="title" placeholder="Enter Title" [(ngModel)]="newTodo.title" formControlName="title" required>
+	    </div>
+	  </div>
+	  <div class="form-group row">
+	    <label for="name" class="col-sm-2 col-form-label">Name</label>
+	    <div class="col-sm-10">
+	      <input type="text" class="form-control" id="name" placeholder="Enter the task" [(ngModel)]="newTodo.name" formControlName="name" required>
+	    </div>
+	  </div>
+	  <div class="form-group row">
+	    <label for="name" class="col-sm-2 col-form-label">dateline</label>
+	    <div class="col-sm-10">
+	      <input type="date" class="form-control" id="dateline" placeholder="Enter the dateline" [(ngModel)]="newTodo.dateline" formControlName="dateline" required>
+	    </div>
+	  </div>
+
+	  <button type="submit" class="btn btn-primary float-left" [disabled]="!Todoform.valid">Add</button>
+	</form>
+</div>
+
+  </header>
+  <section class="main" *ngIf="todos.length > 0">
+    <ul class="todo-list">
+    	<div class="container">
+  			<div class="row">
+      			<li *ngFor="let todo of todos" [class.completed]="todo.complete">
+
+      		<div class="col col-md-3 m-3">
+      			<div class="card" style="width: 18rem;">
+				  <div class="card-body">
+				    <h5 class="card-title">Title: {{todo.title}}</h5>
+				    <h6 class="card-subtitle mb-2 text-muted">Dateline: {{todo.dateline}}</h6>
+				    <p class="card-text">Name: {{todo.name}}</p>
+				    	<div class="form-check">
+						    <input type="checkbox" class="form-check-input card-link" (click)="toggleTodoComplete(todo)" [checked]="todo.complete">
+						    <label class="form-check-label" for="exampleCheck1">Mark as complete</label>
+						 </div>
+						 <button type="button" class="close card-link" aria-label="Close" (click)="removeTodo(todo)">
+					          <span aria-hidden="true">&times;</span> Remove
+					      </button>
+				  </div>
+				</div>
+      		</div>
+		       </li>
+		  </div>
+		</div>
+    </ul>
+  </section>
+
+  <footer class="footer container" *ngIf="todos.length > 0">
+    <span class="todo-count"><strong>{{todos.length}}</strong> {{todos.length == 1 ? 'item' : 'items'}} left</span><br>
+
+    Complete :  {{completeTodo.length}} / Incomplete: {{inCompleteTodo.length}}
+  </footer>
+</section>
