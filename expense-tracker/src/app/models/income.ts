@@ -1,5 +1,4 @@
-import { Interface } from "readline";
-export class Expense {
+export class  Income {
 
     constructor(
       public amount: number,

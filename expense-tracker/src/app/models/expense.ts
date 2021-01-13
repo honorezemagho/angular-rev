@@ -1,6 +1,3 @@
-import { Interface } from "readline";
-
-
 export class Expense {
 
     constructor(
