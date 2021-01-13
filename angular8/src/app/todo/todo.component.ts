@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Todo} from '../models/todo';
 import {TodoService} from '../services/todo.service';
-import { FormGroup, FormControl, Validators, FormBuilder } 
+import { Validators, FormBuilder } 
     from '@angular/forms';
 
 @Component({
@@ -9,7 +9,7 @@ import { FormGroup, FormControl, Validators, FormBuilder }
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css']
 })
-export class TodoComponent implements OnInit{
+export class TodoComponent{
 
 newTodo: Todo = new Todo();
 
